@@ -51,4 +51,14 @@ fn test_gcd() {
 }
 ```
 
-The `#[test]` marks `test_gcd` as a test function, and it tells cargo to skip when compiling, but to run when using `cargo test`. 
+The `#[test]` marks `test_gcd` as a test function, and it tells cargo to skip when compiling, but to run when using `cargo test`.
+
+## Result
+When someting could go wrong with a functions return type, you can use a result.
+
+A result is either Ok(v), where v is the value returned or Err(e), where e is the error returned.
+
+## * and &
+&x borrows a reference to x, *r is the value that the reference r refers to.
+Ownership will be looked at in more detail in chapters 4 and 5.
+
