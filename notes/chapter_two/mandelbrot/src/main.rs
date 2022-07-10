@@ -1,11 +1,26 @@
 use image::png::PNGEncoder;
 use image::ColorType;
 use num::Complex;
+use std::env;
 use std::fs::File;
 use std::str::FromStr;
 
 fn main() {
-    println!("Hello, world!");
+    let args: Vec<String> = env::args().collect();
+
+    if args.len() != 5 {
+        std::process::exit(1);
+    }
+
+    let bounds = parse_pair(&args[2], 'x').expect("error parsing dimensions");
+    let upper_left = parse_complex(&args[3]).expect("error parsing upper left");
+    let lower_right = parse_complex(&args[4]).expect("error parsing bottom right");
+
+    let mut pixles = vec![0; bounds.0 * bounds.1];
+
+    render(&mut pixles, bounds, upper_left, lower_right);
+
+    write_image(&args[1], &pixles, bounds).expect("error writting file");
 }
 
 fn write_image(

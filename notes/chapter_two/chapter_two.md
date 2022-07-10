@@ -62,3 +62,4 @@ A result is either Ok(v), where v is the value returned or Err(e), where e is th
 &x borrows a reference to x, *r is the value that the reference r refers to.
 Ownership will be looked at in more detail in chapters 4 and 5.
 
+## Concurrency
